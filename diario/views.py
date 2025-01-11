@@ -18,11 +18,6 @@ def home(request):
         qtd = Diario.objects.filter(pessoas=pessoa).count()
         qtds.append(qtd)
 
-
-    '''pessoas_com_contagem = Pessoa.objects.annotate(qtd_diarios=Count('diario'))
-    nomes = [pessoa.nome for pessoa in pessoas_com_contagem]
-    qtds = [pessoa.qtd_diarios for pessoa in pessoas_com_contagem]'''
-
     return render(request, 'home.html', {'textos': textos, 'nomes': nomes, 'qtds': qtds})
 
 def escrever(request):
