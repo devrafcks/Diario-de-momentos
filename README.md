@@ -1,8 +1,9 @@
 # Projeto Diário de Anotações
 
-![Imagem 1](https://github.com/user-attachments/assets/ecf57bd2-2e6f-40bb-a739-4337ff1de3be)
-![Imagem 2](https://github.com/user-attachments/assets/56e3d067-8d08-425f-b3f5-b3fdb938d54d)
-![Imagem 3](https://github.com/user-attachments/assets/4a658be0-2ec0-42f8-82fd-22e519c421e0)
+![Captura de tela 2025-01-11 060030](https://github.com/user-attachments/assets/61ad4c80-5f83-4972-b214-ee38f90e049e)
+![Captura de tela 2025-01-11 060430](https://github.com/user-attachments/assets/6376f02f-7544-4735-bb17-960ad0341687)
+![Captura de tela 2025-01-11 060719](https://github.com/user-attachments/assets/15d0635b-e48c-42be-8c84-6efe92487f23)
+![Captura de tela 2025-01-11 060202](https://github.com/user-attachments/assets/aa1bdff8-f422-412b-b733-f98290632521)
 
 Este é um **Diário de Anotações** desenvolvido para ajudar os usuários a registrar, visualizar, excluir e analisar suas anotações diárias. A solução foi construída com o backend em **Django** e usa a biblioteca **Chart.js** para gráficos interativos, permitindo que o usuário tenha uma visão mais visual sobre suas anotações. Também oferece suporte ao upload e gerenciamento de imagens associadas a cada anotação.
 
