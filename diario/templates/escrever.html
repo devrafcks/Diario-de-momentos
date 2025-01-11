@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'body' %}
+
+<div class="bg-gray-100 min-h-screen relative isolate font-inter">
+    <svg class="absolute inset-0 -z-10 size-full stroke-slate-300/20 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]" aria-hidden="true">
+        <defs>
+            <pattern id="pattern-bg" width="200" height="200" x="50%" y="-1" patternUnits="userSpaceOnUse">
+            <path d="M.5 200V.5H200" fill="none" />
+            </pattern>
+        </defs>
+        <svg x="50%" y="-1" class="overflow-visible fill-slate-200">
+            <path d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z" stroke-width="0" />
+        </svg>
+        <rect width="100%" height="100%" stroke-width="0" fill="url(#pattern-bg)" />
+    </svg>
+    <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80 pointer-events-none" aria-hidden="true">
+        <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-blue-400 to-purple-400 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+    </div>
+    <div class="max-w-7xl mx-auto py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 px-2 gap-6">
+            <div class="bg-white ring ring-1 ring-gray-200 rounded-md py-8 px-6 shadow-sm">
+                <form action="{% url 'escrever' %}" method="POST">
+                    {% csrf_token %}
+                    <h1 class="text-balance font-semibold tracking-tight text-gray-900 sm:text-4xl">Create your daily log</h1>
+                    <br>
+                    <div>
+                        <label class="block text-sm/6 font-medium text-gray-800">Title</label>
+                        <div class="mt-2">
+                        <input type="text" name="title" id="title" class="block w-full rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-500 sm:text-sm/6" placeholder="Enter title...">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="mt-2">
+                                <label for="tags" class="block text-sm/6 font-medium text-gray-800 mt-2">Tags</label>
+                                <select multiple name="tags" id="tags" class="block w-full rounded-md bg-gray-100 px-3 py-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-500 sm:text-sm/6">
+                                    <option value="Travel">Travel</option>
+                                    <option value="Work">Work</option>
+                                </select>
+                            </div>
+                            <div class="mt-2">
+                                <label for="people" class="block text-sm/6 font-medium text-gray-800 mt-2">People</label>
+                                <select multiple name="people" id="people" class="block w-full rounded-md bg-gray-100 px-3 py-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-500 sm:text-sm/6">
+                                    {% for i in pessoas %}
+	                                    <option value="{{i.id}}">{{i.nome}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-2">
+                            <label for="text" class="block text-sm/6 font-medium text-gray-800 mt-2">Text</label>
+                            <textarea name="text" id="text" class="block w-full rounded-md bg-gray-100 px-3 py-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-500 sm:text-sm/6"></textarea>
+                        </div>
+                    </div>
+                    <input type="submit" class="mt-6 w-full text-center rounded-md bg-blue-500 px-3.5 py-2.5 text-xl font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500" value="Submit">
+                </form>
+            </div>
+            
+            <div>
+                <h1 class="text-balance text-2xl font-semibold tracking-tight text-gray-900">Review your memories</h1>
+                <div class="mt-2">
+                <input type="date" id="date" class="block w-full rounded-md bg-gray-100 px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-500 sm:text-sm/6" placeholder="Choose a date">
+                <br>
+                <a id="link" class="mt-6 rounded-md cursor-pointer bg-blue-500 px-3.5 py-2.5 text-2xl font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">Enter</a>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const input = document.getElementById('date');
+    const link = document.getElementById('link');
+    
+    input.addEventListener('input', () => {
+        const data = input.value;
+        if (data) {
+            link.href = `/diario/dia?data=${data}`;
+        } else {
+            link.href = "#"; 
+        }
+    });
+
+    link.addEventListener('click', (e) => {
+        if (!input.value) {
+            e.preventDefault();
+            alert('Por favor, selecione uma data antes de continuar.');
+        }
+    });
+</script>
+
+{% endblock %}
