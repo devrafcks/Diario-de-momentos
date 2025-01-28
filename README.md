@@ -21,25 +21,9 @@ Este é um **Diário de Anotações** desenvolvido para ajudar os usuários a re
 ### 4. **Interface de Usuário**
    A interface do sistema é responsiva, garantindo uma experiência otimizada tanto em dispositivos móveis quanto em desktops. A navegação é fácil e o design é moderno, com foco em usabilidade.
 
-## Estrutura do Projeto
-
-O projeto é estruturado com o **Django**, seguindo uma arquitetura padrão para sistemas web. Abaixo estão as seções principais do projeto:
-
-- **Painel Administrativo**: A área administrativa do Django, acessada através do caminho `/admin/`, permite que os administradores gerenciem dados do sistema, como usuários e anotações.
-
-- **Diário**: A funcionalidade central do sistema, que permite aos usuários visualizar e excluir suas anotações. Pode ser acessada através do caminho `/diario/`.
-
-- **Página Inicial**: A página inicial serve como ponto de entrada para o sistema, redirecionando os usuários para a funcionalidade principal de visualização e gerenciamento das anotações.
-
 ## Gerenciamento de Arquivos de Mídia
 
 A configuração do projeto permite o upload e gerenciamento de arquivos de mídia (como imagens) associadas às anotações. O Django cuida da entrega eficiente desses arquivos utilizando as configurações `MEDIA_URL` e `MEDIA_ROOT`.
-
-## Funcionalidades Adicionais
-
-- **Exclusão em Massa**: Ao visualizar as anotações de um dia específico, o usuário pode excluir todas as entradas desse dia com apenas um clique. Isso facilita a limpeza de dados sem a necessidade de remoção individual.
-
-- **Personalização de Exibição**: A visualização das anotações permite que o usuário veja detalhes como título, texto e imagens associadas a cada anotação, além de poder visualizar informações de pessoas associadas a cada anotação.
 
 ## Tecnologias Utilizadas
 
@@ -50,6 +34,54 @@ A configuração do projeto permite o upload e gerenciamento de arquivos de míd
 - **HTML/CSS**: Linguagens de marcação e estilo usadas para criar a interface do usuário. O design é responsivo e otimizado para diferentes dispositivos.
 
 - **JavaScript**: Linguagem de programação utilizada para manipular os gráficos interativos na página inicial e para gerenciar eventos de interação do usuário.
+
+## Como Rodar o Projeto
+
+Siga os passos abaixo para rodar o projeto em sua máquina local:
+
+### Pré-requisitos
+- Python 3.10+
+- Git
+- Virtualenv (opcional, mas recomendado)
+
+### Passo a Passo
+
+1. **Clone o repositório**
+   ```bash
+   git clone <URL_DO_REPOSITORIO>
+   cd <NOME_DA_PASTA_CLONADA>
+   ```
+
+2. **Crie e ative um ambiente virtual (opcional)**
+   ```bash
+   python -m venv venv
+   # No Windows:
+   venv\Scripts\activate
+   # No macOS/Linux:
+   source venv/bin/activate
+   ```
+
+3. **Instale as dependências**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Configure o banco de dados**
+   Rode as migrações para configurar o banco de dados SQLite:
+   ```bash
+   python manage.py migrate
+   ```
+
+5. **Inicie o servidor local**
+   ```bash
+   python manage.py runserver
+   ```
+
+6. **Acesse o projeto**
+   Abra o navegador e vá para:
+   ```
+   http://127.0.0.1:8000
+   ```
 
 ## Conclusão
 
